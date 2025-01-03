@@ -1,9 +1,11 @@
 import mongoose from "mongoose"
 
 export interface IUser {
+    id?: mongoose.Schema.Types.ObjectId;
     name: string;
     email: string;
     password: string;
+    refreshToken? : string[];
   }
 const userSchema = new mongoose.Schema<IUser>({
     name: {
@@ -24,6 +26,10 @@ const userSchema = new mongoose.Schema<IUser>({
       required: true,
       minlength: 6
     },
+    refreshToken: {
+      type: [String],
+      default: [],
+    }
   });
 
 const userModel = mongoose.model<IUser>("users",userSchema)
