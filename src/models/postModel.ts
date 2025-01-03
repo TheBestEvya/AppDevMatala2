@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import {commentSchema} from "./commentModel"
-interface IPost{
+
+export interface IPost{
     title: string;
     content: string;
     comments: Array<typeof commentSchema>;
@@ -27,3 +28,4 @@ const postSchema = new mongoose.Schema<IPost>({
   const postModel = mongoose.model<IPost>("posts", postSchema);
 
   export default postModel;
+  
